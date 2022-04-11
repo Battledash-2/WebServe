@@ -1,3 +1,11 @@
+/**
+ * MIT License
+ * Copyright (c) 2022 Battledash-2
+ * 
+ * If a copy of the license was not provided, you
+ * may get one at https://opensource.org/licenses/MIT
+ */
+
 const express = require('express');
 const clrs = require('terminalcolors.js');
 const ansi = { saveCursor: "\u001b7", restoreCursor: "\u001b8", clearLine: "\u001b[2K" };
