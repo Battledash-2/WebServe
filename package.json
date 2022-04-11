@@ -1,6 +1,6 @@
 {
   "name": "servhost",
-  "version": "1.0.0",
+  "version": "1.0.0patch-1",
   "description": "",
   "main": "index.js",
   "scripts": {
