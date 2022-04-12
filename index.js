@@ -139,6 +139,13 @@ let webIg = [
 	'jsx',
 	'mjs',
 ];
+let webIgN = [
+	// HTML
+	'html',
+	'htm',
+	'aspx',
+	'asp'
+];
 
 if (opt.bl != undefined && opt.bl.includes('web')) {
 	let idx = opt.bl.indexOf('web');
@@ -148,7 +155,7 @@ if (opt.bl != undefined && opt.bl.includes('web')) {
 if (opt.lap != undefined && opt.lap.includes('web')) {
 	let idx = opt.bl.indexOf('web');
 	opt.bl.splice(idx, 1);
-	opt.bl.push(...webIg);
+	opt.bl.push(...webIgN);
 }
 
 app.use(express.Router(), middle, express.static(path.join(process.cwd(), opt.path)));
