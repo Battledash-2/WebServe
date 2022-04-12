@@ -96,13 +96,13 @@ for (let i = 0; i<process.argv.length-2; i++) {
 		if (typeof n === 'undefined') throw new Error('Connection declarator without connection path (1)');
 		i++;
 		let n1 = process.argv.slice(2)[i];
-		if (typeof n1 === 'undefined') throw new Error('Connection declarator without connection path (2)');
+		if (typeof n1 === 'undefined' || n1.startsWith('-')) n1 = ''; // throw new Error('Connection declarator without connection path (2)');
 		opt.connections[n1] = n;
 	} else if (_m(co, 'redirect')) {
 		if (typeof n === 'undefined') throw new Error('Redirect declarator without connection path (1)');
 		i++;
 		let n1 = process.argv.slice(2)[i];
-		if (typeof n1 === 'undefined') throw new Error('Redirect declarator without connection path (2)');
+		if (typeof n1 === 'undefined' || n1.startsWith('-')) n1 = ''; // throw new Error('Redirect declarator without connection path (2)');
 		app.use(n1, express.Router(), middle, express.static(path.join(process.cwd(), n)));
 	} else if (_m(co, 'showip')) {
 		if (typeof n === 'undefined' || (n.toLowerCase() !== 'off' && n.toLowerCase() !== 'on')) opt.showIp = true;
