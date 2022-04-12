@@ -1,6 +1,6 @@
 {
   "name": "servhost",
-  "version": "1.0.2patch-4",
+  "version": "1.0.2patch-5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -10,10 +10,15 @@
 	  "servhost": "./bin/servhost.js",
 	  "webserve": "./bin/servhost.js"
   },
-  "author": "",
+  "author": "Battledash-2",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.3",
     "terminalcolors.js": "^1.0.9"
+  },
+  "homepage": "https://github.com/Battledash-2/servhost",
+  "repository": {
+	  "type": "github",
+	  "url": "https://github.com/Battledash-2/servhost"
   }
 }
