@@ -140,12 +140,12 @@ let webIg = [
 	'mjs',
 ];
 
-if (typeof opt.bl !== 'undefined' && opt.bl.includes('web')) {
+if (opt.bl != undefined && opt.bl.includes('web')) {
 	let idx = opt.bl.indexOf('web');
 	opt.bl.splice(idx, 1);
 	opt.bl.push(...webIg);
 }
-if (typeof opt.lap !== 'undefined' && opt.lap.includes('web')) {
+if (opt.lap != undefined && opt.lap.includes('web')) {
 	let idx = opt.bl.indexOf('web');
 	opt.bl.splice(idx, 1);
 	opt.bl.push(...webIg);
