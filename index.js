@@ -8,6 +8,7 @@
 
 const express = require('express');
 const clrs = require('terminalcolors.js');
+const vers = require('./package.json').version;
 const ansi = { saveCursor: "\u001b7", restoreCursor: "\u001b8", clearLine: "\u001b[2K" };
 const path = require('path');
 const fs = require('fs');
@@ -61,7 +62,7 @@ const helpCmd = (n)=>{
 		console.log(`${name}:`);
 		console.log(`${info.split('\n').map(c=>'      '+c).join('\n')}`);
 	}
-	if (typeof n === 'undefined') outHelp('help', 'port\nnolog\nlap\nbl\nhelp\ndir\nnolog\nconnect\nredirect');
+	if (typeof n === 'undefined') outHelp('help (v'+vers+')', 'port\nnolog\nlap\nbl\nhelp\ndir\nnolog\nconnect\nredirect');
 	if (_m(n, 'port')) outHelp('port', 'decides what port the server should use');
 	else if (_m(n, 'nolog')) outHelp('nolog', 'hides logs');
 	else if (_m(n, 'lap')) outHelp('lap', 'decides which files should show in the last accessed path area (a / seperated list)\nExample: js/html << will only show any files with .js or .html');
@@ -110,6 +111,9 @@ for (let i = 0; i<process.argv.length-2; i++) {
 			if (n.toLowerCase() === 'on') opt.showIp = true;
 			if (n.toLowerCase() === 'off') opt.showIp = false;
 		}
+	} else if (_m(co, 'version')) {
+		console.log(`${'Servhost'.green().bold()}, v${vers.yellow().bold()}`);
+		process.exit(0);
 	}
 	
 	else if (_m(co, 'dir') || typeof n === 'undefined') {
@@ -117,6 +121,32 @@ for (let i = 0; i<process.argv.length-2; i++) {
 		else if (typeof n !== 'undefined') opt.path = n;
 		else throw new Error('Path declarator without path');
 	}
+}
+
+let webIg = [
+	// Images & styles
+	'css',
+	'jpeg',
+	'jpg',
+	'png',
+	'svg',
+	'xml',
+
+	// Scripts
+	'js',
+	'jsx',
+	'mjs',
+];
+
+if (opt.bl.includes('web')) {
+	let idx = opt.bl.indexOf('web');
+	opt.bl.splice(idx, 1);
+	opt.bl.push(...webIg);
+}
+if (opt.lap.includes('web')) {
+	let idx = opt.bl.indexOf('web');
+	opt.bl.splice(idx, 1);
+	opt.bl.push(...webIg);
 }
 
 app.use(express.Router(), middle, express.static(path.join(process.cwd(), opt.path)));
