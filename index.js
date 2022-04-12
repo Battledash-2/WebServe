@@ -131,6 +131,8 @@ let webIg = [
 	'png',
 	'svg',
 	'xml',
+	'ico',
+	'icon',
 
 	// Scripts
 	'js',
